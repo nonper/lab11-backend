@@ -29,7 +29,9 @@ public class AuctionController {
         perPage = perPage == null ? 10 : perPage;
         page = page == null ? 1 : page;
         Page<AuctionItem> pageOutput;
-        if(description == null){
+        if(successfulBid != null){
+            pageOutput = auctionService.getAuctionItemFromValue(successfulBid, PageRequest.of(page-1,perPage));
+        } else if(description == null){
             pageOutput = auctionService.getAuctionItems(perPage, page);
         } else {
             pageOutput =
