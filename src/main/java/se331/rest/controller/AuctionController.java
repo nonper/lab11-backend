@@ -25,16 +25,15 @@ public class AuctionController {
     public ResponseEntity<?> getAuctionItems(@RequestParam(value = "_limit", required = false) Integer perPage
             , @RequestParam(value = "_page", required = false) Integer page
             , @RequestParam(value = "description", required = false) String description
-            , @RequestParam(value = "type", required = false) String type
             , @RequestParam(value = "successfulBid", required = false) Integer successfulBid){
         perPage = perPage == null ? 10 : perPage;
         page = page == null ? 1 : page;
         Page<AuctionItem> pageOutput;
-        if(description == null && type == null && successfulBid == null){
+        if(description == null){
             pageOutput = auctionService.getAuctionItems(perPage, page);
         } else {
             pageOutput =
-                    auctionService.getAuctionItems(description, type, successfulBid, PageRequest.of(page-1,perPage));
+                    auctionService.getAuctionItems(description, successfulBid, PageRequest.of(page-1,perPage));
         }
         HttpHeaders responseHeader = new HttpHeaders();
         responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));

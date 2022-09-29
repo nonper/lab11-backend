@@ -12,7 +12,7 @@ public interface AuctionDao {
 
     Optional<AuctionItem> getAuctionItem(Long id);
 
-    Page<AuctionItem> getAuctionItems(String description, String type, Integer value, Pageable page);
+    Page<AuctionItem> getAuctionItems(String description, Integer value, Pageable page);
 
     Page<AuctionItem> getAuctionItemFromValue(Integer value, Pageable page);
 }

@@ -26,9 +26,9 @@ public class AuctionDaoDbImpl implements AuctionDao{
     }
 
     @Override
-    public Page<AuctionItem> getAuctionItems(String description, String type, Integer value, Pageable page) {
+    public Page<AuctionItem> getAuctionItems(String description, Integer value, Pageable page) {
         return auctionRepository.findByDescriptionContainingOrTypeContainingOrSuccessfulBid_AmountLessThanEqual
-                (description, type, value, page);
+                (description, description, value, page);
     }
 
     @Override

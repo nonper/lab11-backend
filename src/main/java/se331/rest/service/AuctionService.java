@@ -12,7 +12,7 @@ public interface AuctionService {
 
     Optional<AuctionItem> getAuctionItem(Long id);
 
-    Page<AuctionItem> getAuctionItems(String description, String type, Integer value, Pageable pageable);
+    Page<AuctionItem> getAuctionItems(String description, Integer value, Pageable pageable);
 
     Page<AuctionItem> getAuctionItemFromValue(Integer value, Pageable pageable);
 }
